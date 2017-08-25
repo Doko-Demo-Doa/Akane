@@ -3,11 +3,14 @@ package com.acaziasoft.akane;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+  private FragmentManager fragmentManager;
 
   private TextView mTextMessage;
 
@@ -36,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    fragmentManager = getSupportFragmentManager();
+    fragmentManager.beginTransaction()
+        .add(R.id.content2, HomeFragment.newInstance(), HomeFragment.TAG)
+        .commit();
 
     mTextMessage = (TextView) findViewById(R.id.message);
     BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
