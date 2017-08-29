@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.acaziasoft.akane.view.fragment.HomeFragment;
@@ -15,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
   private FragmentManager fragmentManager;
 
   private TextView mTextMessage;
+
+  private ImageButton localFileButton;
+
+  private ImageButton cameraButton;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
       = new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -33,4 +33,7 @@ dependencies {
     // ButterKnife:
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // Async HTTP:
+    compile 'com.loopj.android:android-async-http:1.4.9'
 }

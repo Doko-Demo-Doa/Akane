@@ -11,6 +11,7 @@
       android:text="This is sdasdasda"/>
 
   <ImageButton
+      android:id="@+id/btn_local"
       app:srcCompat="@drawable/ic_library"
       android:layout_width="50dp"
       android:layout_height="50dp"/>
