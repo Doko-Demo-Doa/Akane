@@ -1,4 +1,4 @@
-package com.acaziasoft.akane.view;
+package com.acaziasoft.akane.view.activity;
 
 import android.os.Build;
 import android.os.Bundle;

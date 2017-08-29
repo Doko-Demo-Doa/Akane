@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.acaziasoft.akane.view.fragment.HomeFragment;
+
 public class MainActivity extends AppCompatActivity {
 
   private FragmentManager fragmentManager;
@@ -21,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
       switch (item.getItemId()) {
         case R.id.navigation_home:
-          mTextMessage.setText(R.string.title_home);
+          // mTextMessage.setText(R.string.title_home);
           return true;
         case R.id.navigation_dashboard:
-          mTextMessage.setText(R.string.title_dashboard);
+          // mTextMessage.setText(R.string.title_dashboard);
           return true;
         case R.id.navigation_notifications:
-          mTextMessage.setText(R.string.title_notifications);
+          // mTextMessage.setText(R.string.title_notifications);
           return true;
       }
       return false;
@@ -42,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
     fragmentManager = getSupportFragmentManager();
     fragmentManager.beginTransaction()
-        .add(R.id.content2, HomeFragment.newInstance(), HomeFragment.TAG)
+        .add(R.id.content, HomeFragment.newInstance(), HomeFragment.TAG)
         .commit();
 
-    mTextMessage = (TextView) findViewById(R.id.message);
+    // mTextMessage = (TextView) findViewById(R.id.message);
     BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
     navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
   }

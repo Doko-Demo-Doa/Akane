@@ -1,6 +1,6 @@
 package com.acaziasoft.akane.presenter;
 
-public interface Presenter<V> {
+public interface IPresenter<V> {
   void attachView(V view);
 
   void detachView();
