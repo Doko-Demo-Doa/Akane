@@ -10,14 +10,9 @@
       android:layout_height="wrap_content"
       android:text="This is sdasdasda"/>
 
-  <ImageView
+  <ImageButton
       app:srcCompat="@drawable/ic_library"
       android:layout_width="50dp"
       android:layout_height="50dp"/>
-
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="This is home 2"/>
 
 </LinearLayout>
