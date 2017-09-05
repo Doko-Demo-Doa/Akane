@@ -21,9 +21,9 @@ public class HomeFragment extends Fragment implements IFragment {
 
   static HomeFragment fragment;
 
-  @BindView(R.id.btn_local) ImageButton localFileButton;
+  // @BindView(R.id.btn_local) ImageButton localFileButton;
 
-  public static HomeFragment newInstance() {
+  public static HomeFragment getInstance() {
     if (fragment != null) {
       return fragment;
     } else {
@@ -35,14 +35,7 @@ public class HomeFragment extends Fragment implements IFragment {
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_home, container, false);
-    ButterKnife.bind(this, view);
-
-    localFileButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Toast.makeText(getContext(), "ABC", Toast.LENGTH_SHORT).show();
-      }
-    });
+    //ButterKnife.bind(this, view);
 
     return view;
   }

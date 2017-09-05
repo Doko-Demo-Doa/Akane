@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     fragmentManager = getSupportFragmentManager();
     fragmentManager.beginTransaction()
-        .add(R.id.content, HomeFragment.newInstance(), HomeFragment.TAG)
+        .add(R.id.content, HomeFragment.getInstance(), HomeFragment.TAG)
         .commit();
 
     // mTextMessage = (TextView) findViewById(R.id.message);
