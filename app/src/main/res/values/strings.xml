@@ -4,6 +4,6 @@
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
 
-  <string name="fragment_home_local_files">Choose from local files</string>
-  <string name="fragment_home_camera">Capture photos</string>
+  <string name="fragment_home_local_files">Local files</string>
+  <string name="fragment_home_camera">Camera</string>
 </resources>
