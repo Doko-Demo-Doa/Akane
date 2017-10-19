@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         .add(R.id.content, HomeFragment.getInstance(), HomeFragment.TAG)
         .commit();
 
-    // mTextMessage = (TextView) findViewById(R.id.message);
+    mTextMessage = (TextView) findViewById(R.id.message);
+    mTextMessage.setText("Abra");
     BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
     navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
   }

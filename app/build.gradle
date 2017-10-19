@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.acaziasoft.akane"
         minSdkVersion 14
@@ -11,6 +11,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+        manifestPlaceholders = [onesignal_app_id: "4faa10f7-fd42-404e-b711-644963b49c13",
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: "REMOTE"]
     }
     buildTypes {
         release {
@@ -50,4 +54,7 @@ dependencies {
 
     // Async HTTP:
     compile 'com.loopj.android:android-async-http:1.4.9'
+
+    // OneSignal:
+    compile 'com.onesignal:OneSignal:[3.6.2, 3.99.99]'
 }

@@ -1,5 +1,6 @@
 package com.acaziasoft.akane.view.fragment;
 
+import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ public class HomeFragment extends Fragment implements IFragment {
   public static final String TAG = HomeFragment.class.getSimpleName();
 
   static HomeFragment fragment;
+  RectF r;
 
   // @BindView(R.id.btn_local) ImageButton localFileButton;
 
