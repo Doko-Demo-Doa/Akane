@@ -1,20 +1,17 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.0"
     defaultConfig {
         applicationId "com.acaziasoft.akane"
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion 15
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-
-        manifestPlaceholders = [onesignal_app_id: "4faa10f7-fd42-404e-b711-644963b49c13",
-                                // Project number pulled from dashboard, local value is ignored.
-                                onesignal_google_project_number: "REMOTE"]
     }
     buildTypes {
         release {
@@ -25,14 +22,6 @@ android {
             applicationIdSuffix ".debug"
         }
     }
-    productFlavors {
-        dev {
-            minSdkVersion 21
-        }
-        rel {
-            minSdkVersion 16
-        }
-    }
 }
 
 dependencies {
@@ -40,9 +29,9 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:design:26.+'
-    compile 'com.android.support:support-vector-drawable:26.+'
+    compile 'com.android.support:appcompat-v7:27.+'
+    compile 'com.android.support:design:27.+'
+    compile 'com.android.support:support-vector-drawable:27.+'
     testCompile 'junit:junit:4.12'
 
     // ConstraintLayout:
@@ -55,6 +44,9 @@ dependencies {
     // Async HTTP:
     compile 'com.loopj.android:android-async-http:1.4.9'
 
-    // OneSignal:
-    compile 'com.onesignal:OneSignal:[3.6.2, 3.99.99]'
+    // Kotlin:
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

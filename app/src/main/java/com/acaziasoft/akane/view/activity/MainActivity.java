@@ -1,4 +1,4 @@
-package com.acaziasoft.akane;
+package com.acaziasoft.akane.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.acaziasoft.akane.R;
 import com.acaziasoft.akane.view.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
