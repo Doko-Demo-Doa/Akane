@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.0"
+    buildToolsVersion "27.0.1"
     defaultConfig {
         applicationId "com.acaziasoft.akane"
         minSdkVersion 15
@@ -22,10 +22,14 @@ android {
             applicationIdSuffix ".debug"
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -33,17 +37,13 @@ dependencies {
     compile 'com.android.support:design:27.+'
     compile 'com.android.support:support-vector-drawable:27.+'
     testCompile 'junit:junit:4.12'
-
     // ConstraintLayout:
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-
     // ButterKnife:
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-
     // Async HTTP:
     compile 'com.loopj.android:android-async-http:1.4.9'
-
     // Kotlin:
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
