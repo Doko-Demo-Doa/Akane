@@ -1,9 +1,9 @@
 <resources>
-  <string name="app_name">Akane</string>
-  <string name="title_home">Home</string>
-  <string name="title_dashboard">Dashboard</string>
-  <string name="title_notifications">Notifications</string>
+    <string name="app_name">Akane</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
-  <string name="fragment_home_local_files">Local files</string>
-  <string name="fragment_home_camera">Camera</string>
+    <string name="fragment_home_local_files">Local files</string>
+    <string name="fragment_home_camera">Camera</string>
 </resources>

@@ -44,9 +44,16 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     // Async HTTP:
     compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+    compile 'io.github.lizhangqu:coreprogress:1.0.2'
     // Kotlin:
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile 'me.dm7.barcodescanner:zxing:1.8.4'
+
+    compile 'com.github.satyan:sugar:1.5'
 }
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'kotlin-android-extensions'
