@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/color_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Name: "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/color_blank"/>
+
+        <TextView
+            android:id="@+id/tvNameFile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="123 asd as as da das das as a dasd a as as:"
+            android:textSize="18dp"
+            android:singleLine="false"
+            android:textColor="@color/color_blank"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Size: "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/color_blank"/>
+
+        <TextView
+            android:id="@+id/tvSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="123:"
+            android:textSize="18dp"
+            android:textColor="@color/color_blank"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Date upload: "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/color_blank"/>
+
+        <TextView
+            android:id="@+id/tvDateUpload"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="123:"
+            android:textSize="18dp"
+            android:textColor="@color/color_blank"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Url: "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/color_blank"/>
+
+        <TextView
+            android:id="@+id/tvURL"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="123:"
+            android:textSize="18dp"
+            android:textColor="@color/color_blank"/>
+    </LinearLayout>
+
+</LinearLayout>

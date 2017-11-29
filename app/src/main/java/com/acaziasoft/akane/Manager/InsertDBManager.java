@@ -1,5 +1,6 @@
 package com.acaziasoft.akane.Manager;
 
+import android.app.ActivityManager;
 import android.app.NotificationManager;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -20,6 +21,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import io.github.lizhangqu.coreprogress.ProgressHelper;
 import io.github.lizhangqu.coreprogress.ProgressListener;
@@ -39,7 +41,8 @@ public class InsertDBManager {
     private UploadImagePresenter.onCopyClipboard onCopyClipboard;
     private String url = "https://doko.moe/upload.php";
 
-    public InsertDBManager(UploadImagePresenter.onUploadImage onUploadImage, UploadImagePresenter.onInsertDB onInsertDB, UploadImagePresenter.onCopyClipboard onCopyClipboard, Context context) {
+    public InsertDBManager(UploadImagePresenter.onUploadImage onUploadImage, UploadImagePresenter.onInsertDB onInsertDB,
+                           UploadImagePresenter.onCopyClipboard onCopyClipboard, Context context) {
         this.onUploadImage = onUploadImage;
         this.onInsertDB = onInsertDB;
         this.onCopyClipboard = onCopyClipboard;
@@ -145,7 +148,7 @@ public class InsertDBManager {
         builder
                 .setContentTitle("Message")
                 .setContentText(s)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.icon)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setOngoing(onGoing);
         if (show_process)
@@ -154,5 +157,13 @@ public class InsertDBManager {
             mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         mNotificationManager.notify(1, builder.build());
+    }
+
+    public boolean checkStatusActivity(){
+        ActivityManager activityManager = (ActivityManager) context.getSystemService (Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> tasksInfo = activityManager.getRunningTasks(Integer.MAX_VALUE);
+        if(tasksInfo.size() > 0)
+            return true;
+        return false;
     }
 }

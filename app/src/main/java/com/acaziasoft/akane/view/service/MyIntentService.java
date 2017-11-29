@@ -7,13 +7,27 @@ import android.net.Uri;
 
 import com.acaziasoft.akane.Manager.InsertDBManager;
 import com.acaziasoft.akane.model.Item;
+import com.acaziasoft.akane.presenter.EventAction;
 import com.acaziasoft.akane.presenter.UploadImagePresenter;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.Date;
+import java.util.List;
 
 public class MyIntentService extends IntentService implements UploadImagePresenter.onUploadImage, UploadImagePresenter.onInsertDB, UploadImagePresenter.onCopyClipboard {
     private InsertDBManager insertDB;
     private String clipBoard = "";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
     public MyIntentService() {
         super("MyIntentService");
@@ -60,5 +74,9 @@ public class MyIntentService extends IntentService implements UploadImagePresent
     @Override
     public void onCopyClipboard() {
         insertDB.showNotification("Upload done! Copy to clipboard success!", false, false, 0);
+        if(insertDB.checkStatusActivity()){
+            List<Item> items = Item.listAll(Item.class);
+            EventBus.getDefault().post(new EventAction.ReloadData(items));
+        }
     }
 }

@@ -1,52 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/color_white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_white"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/color_main">
 
-  <ImageButton
-      android:id="@+id/btn_local"
-      android:layout_width="96dp"
-      android:layout_height="96dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/ic_library"
-      tools:layout_constraintLeft_creator="1"
-      tools:layout_constraintTop_creator="1"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="AKANE"
+            android:textColor="@color/color_white"
+            android:textSize="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"/>
 
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/fragment_home_local_files"
-      android:textSize="22sp"
-      app:layout_constraintLeft_toLeftOf="@+id/btn_local"
-      app:layout_constraintRight_toRightOf="@+id/btn_local"
-      app:layout_constraintTop_toBottomOf="@+id/btn_local"/>
+        <ImageButton
+            android:id="@+id/btn_camera"
+            app:srcCompat="@drawable/ic_camera"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_main" />
 
-  <ImageButton
-      android:id="@+id/btn_camera"
-      android:layout_width="96dp"
-      android:layout_height="96dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:srcCompat="@drawable/ic_camera"
-      tools:layout_constraintLeft_creator="1"
-      tools:layout_constraintTop_creator="1"/>
+        <ImageButton
+            android:id="@+id/btn_local"
+            app:srcCompat="@drawable/ic_library"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_main"/>
+    </LinearLayout>
 
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/fragment_home_camera"
-      android:textSize="22sp"
-      app:layout_constraintLeft_toLeftOf="@+id/btn_camera"
-      app:layout_constraintRight_toRightOf="@+id/btn_camera"
-      app:layout_constraintTop_toBottomOf="@+id/btn_camera"/>
-
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerDash" />
+</LinearLayout>

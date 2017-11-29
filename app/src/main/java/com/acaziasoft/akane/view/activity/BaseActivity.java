@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 
 import com.acaziasoft.akane.R;
@@ -39,33 +40,33 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract void init();
 
-    public void pushFragment(Fragment fragment){
-        fragments.push(fragment);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        try {
-            ft.add(R.id.content, fragment, fragment.getClass().getName())
-                    .addToBackStack(fragment.getClass().getSimpleName())
-                    .commitAllowingStateLoss();
-            getSupportFragmentManager().executePendingTransactions();
-        }
-        catch (Exception e){
-
-        }
+    public void StackFragmentManager(Fragment fragment) {
+        pushFragment(fragment);
     }
 
-    public void ReplaceFragment(Fragment fragment){
-        if(fragments.isEmpty()){
-            pushFragment(fragment);
-            return;
-        }
-        Fragment currentFragment = fragments.pop();
+    private void pushFragment(Fragment fragment) {
         fragments.push(fragment);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .remove(currentFragment)
-                .add(R.id.content, fragment, fragment.getClass().getName())
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.content, fragment, fragment.getClass().getName())
+                .addToBackStack(fragment.getClass().getSimpleName())
                 .commitAllowingStateLoss();
         getSupportFragmentManager().executePendingTransactions();
+    }
 
+    private void ReplaceFragment(Fragment fragment) {
+        fragments.pop();
+        fragments.add(fragment);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content, fragment, fragment.getClass().getName())
+                .commitAllowingStateLoss();
+        getSupportFragmentManager().executePendingTransactions();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(fragments.size() == 1)
+            finish();
+        super.onBackPressed();
     }
 }
