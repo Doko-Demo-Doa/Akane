@@ -1,37 +1,31 @@
 package com.acaziasoft.akane.view.fragment;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Intent;
-import android.graphics.RectF;
-import android.net.Uri;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.Toast;
+import android.view.animation.OvershootInterpolator;
 
 import com.acaziasoft.akane.Adapter.DashboardAdapter;
-import com.acaziasoft.akane.Manager.InsertDBManager;
 import com.acaziasoft.akane.R;
 import com.acaziasoft.akane.model.Item;
 import com.acaziasoft.akane.presenter.EventAction;
-import com.acaziasoft.akane.presenter.UploadImagePresenter;
 import com.acaziasoft.akane.view.activity.BaseActivity;
 import com.acaziasoft.akane.view.service.MyIntentService;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +40,7 @@ import butterknife.OnClick;
 
 import static android.app.Activity.RESULT_OK;
 
-public class HomeFragment extends Fragment implements IFragment{
+public class HomeFragment extends Fragment implements IFragment {
 
     public static final String TAG = HomeFragment.class.getSimpleName();
 
@@ -54,6 +48,9 @@ public class HomeFragment extends Fragment implements IFragment{
 
     @BindView(R.id.recyclerDash)
     RecyclerView recyclerDash;
+
+    @BindView(R.id.layoutLoading)
+    View layoutLoading;
 
     DashboardAdapter adapter;
 
@@ -68,6 +65,7 @@ public class HomeFragment extends Fragment implements IFragment{
         EventBus.getDefault().register(this);
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
+        LoadingDelay();
         initView();
         return view;
     }
@@ -94,7 +92,6 @@ public class HomeFragment extends Fragment implements IFragment{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         if (photo != null) {
             startActivityForResult(intent, 2);
         }
@@ -121,15 +118,37 @@ public class HomeFragment extends Fragment implements IFragment{
 
     private void initView() {
         recyclerDash.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        List<Item> items = Item.listAll(Item.class);
-        Log.e("size item", String.valueOf(items.size()));
-        adapter = new DashboardAdapter((ArrayList<Item>) items, getContext());
         recyclerDash.setHasFixedSize(true);
+        List<Item> items = Item.listAll(Item.class);
+        adapter = new DashboardAdapter((ArrayList<Item>) items, getContext());
         recyclerDash.setAdapter(adapter);
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(EventAction.ReloadData data){
-        adapter.setData(data.items);
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getContext().getSystemService(getContext().CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+    private void LoadingDelay() {
+        if (layoutLoading.getVisibility() == View.GONE)
+            layoutLoading.setVisibility(View.VISIBLE);
+        if (isOnline()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    layoutLoading.setVisibility(View.GONE);
+                }
+            }, 5000);
+        } else {
+//            ((BaseActivity) getActivity()).dialogFinishApp("Not connect network.");
+        }
+
+    }
+
+    @Subscribe
+    public void onEvent(EventAction.ReloadData data) {
+        adapter.setData(data.item);
     }
 }

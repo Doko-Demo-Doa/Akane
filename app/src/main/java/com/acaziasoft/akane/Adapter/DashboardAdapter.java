@@ -3,6 +3,8 @@ package com.acaziasoft.akane.Adapter;
 import android.app.Dialog;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -41,9 +43,9 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
         this.context = context;
     }
 
-    public void setData(List<Item> items){
-        this.items = (ArrayList<Item>) items;
-        notifyDataSetChanged();
+    public void setData(Item item) {
+        this.items.add(item);
+        notifyItemInserted(items.size() - 1);
     }
 
     @Override
@@ -106,10 +108,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
             tvDateUpload = dialog.findViewById(R.id.tvDateUpload);
             tvURL = dialog.findViewById(R.id.tvURL);
             tvNameFile.setText(item.getName());
-            double size = item.getSize() / 1024;
-            Log.e("size mb", String.valueOf(size));
-            DecimalFormat df = new DecimalFormat("0.00");
-            tvSize.setText(String.format("%s kb", df.format(size)));
+            tvSize.setText(ConvertMB(item.getSize()));
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(item.getUploadDate());
             tvDateUpload.setText(String.format("%d/%d/%d %d:%d:%d", calendar.get(Calendar.DAY_OF_MONTH),
@@ -118,6 +117,17 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
             tvURL.setText(item.getUrl());
             dialog.getWindow().getAttributes().width = ViewGroup.LayoutParams.MATCH_PARENT;
             dialog.show();
+        }
+
+        private String ConvertMB(double value) {
+            double size = value / 1024;
+            String type = "kb";
+            if (size >= 1000) {
+                size = size / 1024;
+                type = "mb";
+            }
+            DecimalFormat df = new DecimalFormat("0.00");
+            return String.format("%s " + type, df.format(size));
         }
     }
 }

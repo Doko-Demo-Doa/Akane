@@ -58,7 +58,7 @@ public class MyIntentService extends IntentService implements UploadImagePresent
 
     @Override
     public void uploadFail(String s) {
-        insertDB.showNotification(s, false, false,0);
+        insertDB.showNotification(s, false, false, 0);
     }
 
     @Override
@@ -74,9 +74,9 @@ public class MyIntentService extends IntentService implements UploadImagePresent
     @Override
     public void onCopyClipboard() {
         insertDB.showNotification("Upload done! Copy to clipboard success!", false, false, 0);
-        if(insertDB.checkStatusActivity()){
+        if (insertDB.checkStatusActivity()) {
             List<Item> items = Item.listAll(Item.class);
-            EventBus.getDefault().post(new EventAction.ReloadData(items));
+            EventBus.getDefault().post(new EventAction.ReloadData(items.get(items.size() - 1)));
         }
     }
 }

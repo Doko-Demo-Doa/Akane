@@ -1,10 +1,12 @@
 package com.acaziasoft.akane.view.activity;
 
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -61,6 +63,19 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .replace(R.id.content, fragment, fragment.getClass().getName())
                 .commitAllowingStateLoss();
         getSupportFragmentManager().executePendingTransactions();
+    }
+
+    public void dialogFinishApp(String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Message")
+                .setMessage(message)
+                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+        builder.show();
     }
 
     @Override

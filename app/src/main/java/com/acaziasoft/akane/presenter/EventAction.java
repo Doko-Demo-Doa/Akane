@@ -10,10 +10,10 @@ import java.util.List;
 
 public class EventAction {
     public static class ReloadData{
-        public List<Item> items;
+        public Item item;
 
-        public ReloadData(List<Item> items) {
-            this.items = items;
+        public ReloadData(Item item) {
+            this.item = item;
         }
     }
 }

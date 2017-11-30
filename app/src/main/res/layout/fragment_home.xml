@@ -1,43 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/color_white"
-    android:orientation="vertical">
+    android:background="@color/color_white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/color_main">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/color_main">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="AKANE"
+                android:textColor="@color/color_white"
+                android:textSize="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageButton
+                android:id="@+id/btn_camera"
+                app:srcCompat="@drawable/ic_camera"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@color/color_main" />
+
+            <ImageButton
+                android:id="@+id/btn_local"
+                app:srcCompat="@drawable/ic_library"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="@color/color_main"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AKANE"
-            android:textColor="@color/color_white"
-            android:textSize="30dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"/>
-
-        <ImageButton
-            android:id="@+id/btn_camera"
-            app:srcCompat="@drawable/ic_camera"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="@color/color_main" />
-
-        <ImageButton
-            android:id="@+id/btn_local"
-            app:srcCompat="@drawable/ic_library"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:background="@color/color_main"/>
+            android:id="@+id/recyclerDash" />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <RelativeLayout
+        android:id="@+id/layoutLoading"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recyclerDash" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:clickable="true"
+        android:visibility="gone"
+        android:background="@color/color_main">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AKANE"
+                android:textColor="@color/color_white"
+                android:textSize="50dp" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                app:indicatorName="PacmanIndicator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="loading ..."
+                android:textColor="@color/color_white"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</RelativeLayout>
