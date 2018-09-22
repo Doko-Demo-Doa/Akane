@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.acaziasoft.akane">
+          package="com.acaziasoft.akane">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-    <application
-        android:name=".AkaneApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/icon"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/icon"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <meta-data
-            android:name="DATABASE"
-            android:value="database.db" />
-        <meta-data
-            android:name="VERSION"
-            android:value="2" />
-        <meta-data
-            android:name="QUERY_LOG"
-            android:value="true" />
-        <meta-data
-            android:name="DOMAIN_PACKAGE_NAME"
-            android:value="com.acaziasoft.akane" />
+  <application
+      android:name=".AkaneApplication"
+      android:allowBackup="true"
+      android:icon="@mipmap/icon"
+      android:label="@string/app_name"
+      android:roundIcon="@mipmap/icon"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme">
+    <meta-data
+        android:name="DATABASE"
+        android:value="database.db"/>
+    <meta-data
+        android:name="VERSION"
+        android:value="2"/>
+    <meta-data
+        android:name="QUERY_LOG"
+        android:value="true"/>
+    <meta-data
+        android:name="DOMAIN_PACKAGE_NAME"
+        android:value="com.acaziasoft.akane"/>
 
-        <activity android:name=".view.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="image/*" />
-            </intent-filter>
-        </activity>
+    <activity android:name=".view.activity.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <action android:name="android.intent.action.MAIN"/>
 
-        <service
-            android:name=".view.service.MyIntentService"
-            android:exported="false"></service>
-    </application>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.SEND"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:mimeType="image/*"/>
+      </intent-filter>
+    </activity>
+
+    <service
+        android:name=".view.service.MyIntentService"
+        android:exported="false"/>
+  </application>
 
 </manifest>
