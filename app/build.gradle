@@ -46,7 +46,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     // Async HTTP:
     implementation 'com.loopj.android:android-async-http:1.4.9'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'io.github.lizhangqu:coreprogress:1.0.2'
     // Kotlin:
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
